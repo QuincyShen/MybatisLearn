@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace=绑定一个对应的DAO/Mapper接口-->
+<mapper namespace="com.quincy.mapper.IUserMapper">
+    <!--在当前Mapper.xml中使用二级缓存-->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+    <cache eviction="FIFO" flushInterval="60000" readOnly="true" size="512"/>
+    <select id="getUserById" resultType="user" parameterType="int">
+        select * from user where id = #{id};
+    </select>
+</mapper>
